@@ -1,6 +1,5 @@
 import networkx as nx
 import matplotlib.pyplot as plt
-from copy import deepcopy
 
 num_rows = 10
 num_cols = 10
@@ -20,7 +19,9 @@ for x in range(1, 4):
 # remove obstacle nodes in map
 graph_2d_grid.remove_nodes_from(obstacles)
 
-# node with cost of 5
+
+
+# update edges of nodes with cost of 5
 nodes_with_cost5 = []
 for x in range(3, 8):
     if x == 3:
@@ -58,13 +59,17 @@ dist = nx.dijkstra_path_length(graph_2d_grid,
                                target=goal_node, 
                                weight='weight')
 
+
 edges = []
 for i in range(len(shortest_path) - 1):
     current_node = shortest_path[i]
     next_node = shortest_path[i+1]
     edges.append((current_node, next_node))
 
+
+from copy import deepcopy
 # path graph
+
 path_graph = deepcopy(graph_2d_grid)
 other_nodes = []
 for node in path_graph.nodes:
@@ -75,6 +80,37 @@ path_graph.remove_nodes_from(other_nodes)
 
 
 # plots
+plt.figure(0, figsize=(6, 6))
+nx.draw_networkx_nodes(graph_2d_grid, 
+                       graph_2d_grid.pos, 
+                       node_size=875,
+                       node_color='grey',
+                       node_shape='s',
+                       edgecolors='white')
+
+nx.draw_networkx_nodes(graph_2d_grid, 
+                       graph_2d_grid.pos, 
+                       nodelist=[start_node], 
+                       node_color='pink',
+                       node_shape='*',
+                       node_size=890)
+
+nx.draw_networkx_nodes(graph_2d_grid, 
+                       graph_2d_grid.pos, 
+                       nodelist=[goal_node], 
+                       node_color='green',
+                       node_shape='X',
+                       node_size=890)
+
+nx.draw_networkx_nodes(graph_2d_grid,
+                       graph_2d_grid.pos,
+                       nodelist=nodes_with_cost5,
+                       node_shape='x')
+
+plt.title("Dijkstra algorithm in grid map")
+plt.savefig('dijkstra_grid.png', dpi=400)
+
+
 plt.figure(1, figsize=(6, 6))
 nx.draw_networkx_nodes(graph_2d_grid, 
                        graph_2d_grid.pos, 
