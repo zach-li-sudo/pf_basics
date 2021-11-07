@@ -170,4 +170,10 @@ Lucky, we don't bother to write the `breadth_first_search()` function and draw t
   
   ### Dijkstra's Algorithm
   
+  So far, in all the grid maps, we assume that each step has the same cost. However, in some problems, for example in the game Civilization, moving through plains take 1 energy point, but moving across forest may take 5 points! Shown in the following figure from [*Red Blob Games*](https://www.redblobgames.com/pathfinding/a-star/introduction.html#breadth-first-search) article, the shortest number of steps does not always associate with the smallest costs.
   
+  <img src="../../../../Library/Application Support/typora-user-images/Screen Shot 2021-11-07 at 3.51.52 PM.png" alt="Screen Shot 2021-11-07 at 3.51.52 PM" style="zoom:50%;" />
+
+> Introduction to the A* Algorithm, by [*Red Blob Games*](https://www.redblobgames.com/pathfinding/a-star/introduction.html#breadth-first-search)
+
+For this uniform cost search problem, the famous Dijkstra's Algorithm can help. Here we 
