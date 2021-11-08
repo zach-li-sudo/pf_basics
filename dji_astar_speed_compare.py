@@ -83,17 +83,16 @@ def dji_astar_elapse_time(size_array):
 if __name__ == "__main__":
     size_array = [s for s in range(20, 200, 40)]
     size_array += [200, 300, 400, 500]
-    # print(size_array)
-
+    
     df = dji_astar_elapse_time(size_array)
     print(df)
 
     ax = plt.gca()
-
     df.plot(kind='scatter', x='mapSize', y='Djik', ax=ax)
     df.plot(kind='scatter', x='mapSize', y='A*', color='red', ax=ax)
     
     plt.ylabel('Elapse time/s')
     plt.title("Comparison of speed Djikstra/A*")
+    plt.legend(['Djik', 'A*'])
     plt.savefig('comp_dji_astar.png', dpi=400)
     plt.show()
