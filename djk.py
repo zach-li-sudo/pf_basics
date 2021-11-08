@@ -150,4 +150,4 @@ nx.draw_networkx_nodes(graph_2d_grid,
                        node_size=890)
 
 plt.title("Dijkstra distance={}".format(dist))
-plt.savefig('djikstra.png', dpi=400)
+plt.savefig('dijkstra.png', dpi=400)

@@ -39,20 +39,20 @@ def dji_astar_elapse_time(size_array):
 
         # find shortest path dijkstra
         td = time()
-        shortest_path_djik = nx.dijkstra_path(graph_2d_grid, 
+        shortest_path_Dijk = nx.dijkstra_path(graph_2d_grid, 
                                         source=start_node, 
                                         target=goal_node)
-        dist_djik = nx.dijkstra_path_length(graph_2d_grid, 
+        dist_Dijk = nx.dijkstra_path_length(graph_2d_grid, 
                                     source=start_node, 
                                     target=goal_node)
 
         td = time() - td
 
-        edges_djik = []
-        for i in range(len(shortest_path_djik) - 1):
-            current_node = shortest_path_djik[i]
-            next_node = shortest_path_djik[i+1]
-            edges_djik.append((current_node, next_node))
+        edges_Dijk = []
+        for i in range(len(shortest_path_Dijk) - 1):
+            current_node = shortest_path_Dijk[i]
+            next_node = shortest_path_Dijk[i+1]
+            edges_Dijk.append((current_node, next_node))
 
 
         # A star heuristic
@@ -75,7 +75,7 @@ def dji_astar_elapse_time(size_array):
     
     data = np.asarray(data)
 
-    df = pd.DataFrame(data, columns=["mapSize", "Djik", "A*"])
+    df = pd.DataFrame(data, columns=["mapSize", "Dijk", "A*"])
     return df
 
 
@@ -88,11 +88,11 @@ if __name__ == "__main__":
     print(df)
 
     ax = plt.gca()
-    df.plot(kind='scatter', x='mapSize', y='Djik', ax=ax)
+    df.plot(kind='scatter', x='mapSize', y='Dijk', ax=ax)
     df.plot(kind='scatter', x='mapSize', y='A*', color='red', ax=ax)
     
     plt.ylabel('Elapse time/s')
-    plt.title("Comparison of speed Djikstra/A*")
-    plt.legend(['Djik', 'A*'])
-    plt.savefig('comp_dji_astar.png', dpi=400)
+    plt.title("Comparison of speed Dijkstra/A*")
+    plt.legend(['Dijk', 'A*'])
+    plt.savefig('comp_dij_astar.png', dpi=400)
     plt.show()

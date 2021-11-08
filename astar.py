@@ -1,4 +1,5 @@
 # A star heuristic
+# ---->  astar.py
 import networkx as nx
 import matplotlib.pyplot as plt
 from time import time
@@ -35,22 +36,22 @@ graph_2d_grid.remove_nodes_from(obstacles)
 
 # find shortest path dijkstra
 td = time()
-shortest_path_djik = nx.dijkstra_path(graph_2d_grid, 
+shortest_path_Dijk = nx.dijkstra_path(graph_2d_grid, 
                                  source=start_node, 
                                  target=goal_node, 
                                  weight='weight')
-dist_djik = nx.dijkstra_path_length(graph_2d_grid, 
+dist_Dijk = nx.dijkstra_path_length(graph_2d_grid, 
                                source=start_node, 
                                target=goal_node, 
                                weight='weight')
 
 td = time() - td
 
-edges_djik = []
-for i in range(len(shortest_path_djik) - 1):
-    current_node = shortest_path_djik[i]
-    next_node = shortest_path_djik[i+1]
-    edges_djik.append((current_node, next_node))
+edges_Dijk = []
+for i in range(len(shortest_path_Dijk) - 1):
+    current_node = shortest_path_Dijk[i]
+    next_node = shortest_path_Dijk[i+1]
+    edges_Dijk.append((current_node, next_node))
 
 
 
@@ -84,13 +85,13 @@ for i in range(len(shortest_path_astar) - 1):
 from copy import deepcopy
 # path graph
 
-path_graph_djik = deepcopy(graph_2d_grid)
-other_nodes_djik = []
-for node in path_graph_djik.nodes:
-    if node not in shortest_path_djik[1:-1]:
-        other_nodes_djik.append(node)
+path_graph_Dijk = deepcopy(graph_2d_grid)
+other_nodes_Dijk = []
+for node in path_graph_Dijk.nodes:
+    if node not in shortest_path_Dijk[1:-1]:
+        other_nodes_Dijk.append(node)
 
-path_graph_djik.remove_nodes_from(other_nodes_djik)
+path_graph_Dijk.remove_nodes_from(other_nodes_Dijk)
 
 
 path_graph_astar = deepcopy(graph_2d_grid)
@@ -104,7 +105,7 @@ path_graph_astar.remove_nodes_from(other_nodes_astar)
 
 
 if num_cols >= 100 or num_rows >= 100:
-    print('Djikstra time: {}, A star time: {}'.format(td, ta))
+    print('Dijkstra time: {}, A star time: {}'.format(td, ta))
     exit()
 
 plt.figure(figsize=(12, 6))
@@ -116,15 +117,15 @@ nx.draw_networkx_nodes(graph_2d_grid,
                        node_shape='s',
                        edgecolors='white')
 
-nx.draw_networkx_nodes(path_graph_djik, 
-                       path_graph_djik.pos,
+nx.draw_networkx_nodes(path_graph_Dijk, 
+                       path_graph_Dijk.pos,
                        node_shape='o',
                        node_color='r',
                        node_size=200)
 
-nx.draw_networkx_edges(path_graph_djik, 
-                       path_graph_djik.pos, 
-                       edgelist=edges_djik, 
+nx.draw_networkx_edges(path_graph_Dijk, 
+                       path_graph_Dijk.pos, 
+                       edgelist=edges_Dijk, 
                        edge_color='red', 
                        width=5)
 
@@ -142,7 +143,7 @@ nx.draw_networkx_nodes(graph_2d_grid,
                        node_shape='X',
                        node_size=590)
 
-ax1.title.set_text('Djikstra distance={}\n elapse time={}'.format(dist_djik, td))
+ax1.title.set_text('Dijkstra distance={}\n elapse time={}'.format(dist_Dijk, td))
 
 
 ax2 = plt.subplot(1, 2, 2)
@@ -181,5 +182,4 @@ nx.draw_networkx_nodes(graph_2d_grid,
 
 ax2.title.set_text('A star distance={}\n elapse time={}'.format(dist_astar, ta))
 # plt.show()
-plt.savefig('djikstra_astar.png', dpi=400)
-exit()
+plt.savefig('dijkstra_astar.png', dpi=400)
