@@ -321,7 +321,7 @@ Voilà! We get the same results and visualize them!
 
 > Dijkstra's Algorithm works well to find the shortest path, but it wastes time exploring in directions that are not promising. Greedy Best First Search explores in promising directions but it may not find the shortest path. The A* algorithm uses *both\* the actual distance from the start and the estimated distance to the goal.
 >
-> ---- Introduction to the A* Algorithm, [*Red Blob Games\*](https://www.redblobgames.com/pathfinding/a-star/introduction.html#breadth-first-search)
+> ---- Introduction to the A* Algorithm, [Red Blob Games](https://www.redblobgames.com/pathfinding/a-star/introduction.html#breadth-first-search)
 
 Different from the Dijkstra's Algorithm, A* uses a heuristic to render the nodes, such that the exploring frontier expands towards the goal, rather than explores in all directions like the Dijkstra's algorithm. So A* is more likely to be faster especially in large scale and complex graphs.
 
@@ -470,7 +470,7 @@ In this section, we first check the optimality of A* algorithm, then we perform 
   
   Compare the paths and elapse time:
   
-  ![img](https://github.com/zach-li-sudo/pf_basics/blob/6f454ce7845076c7ad6a9cf29508d36f0d1eb541/dijkstra_astar.png)
+  ![img](https://github.com/zach-li-sudo/pf_basics/dijkstra_astar.png)
   
   We can see that the two optimal paths are identical, implying the optimality of A star. But the elapse time of Dijkstra is smaller than A star, which seems to contradict with our claim. The reason is that the map size is not large enough for A star to show its privileges to the Dijkstra's method.
   
@@ -591,7 +591,7 @@ In this section, we first check the optimality of A* algorithm, then we perform 
   
   
 
-![comp](https://github.com/zach-li-sudo/pf_basics/blob/27fd22b02360bc87eeecebc496321b40a6e1065b/comp_dij_astar.png)
+![comp](https://github.com/zach-li-sudo/pf_basics/comp_dij_astar.png)
 
 When the map size is small or medium $(\le200)$, the two algorithms has the similar performance. But A star is way faster when the map size becomes large. The trend confirms our claim at the very beginning of this section.
 
